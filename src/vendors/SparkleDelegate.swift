@@ -24,7 +24,10 @@ class SparkleDelegate: NSObject, SPUUpdaterDelegate {
     var onNextCheckCompletion: ((UpdateCheckResult) -> Void)?
 
     func feedURLString(for updater: SPUUpdater) -> String? {
-        return Endpoints.appcastUrl
+        // Local fork: updates are disabled. Returning nil prevents Sparkle from ever
+        // contacting the official appcast — a successful update would replace this
+        // patched build with the upstream paywalled release.
+        return nil
     }
 
     func feedParameters(for updater: SPUUpdater, sendingSystemProfile sendingProfile: Bool) -> [[String: String]] {

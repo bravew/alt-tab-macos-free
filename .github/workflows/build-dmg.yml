@@ -1,0 +1,92 @@
+name: Build AltTab Free DMG
+
+# Builds the patched (free) AltTab and packages an unsigned .dmg.
+# Unsigned => recipients do a one-time right-click → Open to bypass Gatekeeper.
+# Runs on push to master, manual dispatch, or when a Release is published.
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version string (e.g. 8.3.3). Defaults to latest tag."
+        required: false
+  release:
+    types: [ published ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # need tags for version detection
+
+      - name: Select latest stable Xcode
+        run: sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)" || true
+
+      - name: Determine version
+        id: ver
+        run: |
+          V="${{ github.event.inputs.version }}"
+          if [ -z "$V" ] && [ "${{ github.event_name }}" = "release" ]; then
+            V="${{ github.event.release.tag_name }}"
+          fi
+          [ -z "$V" ] && V="$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')"
+          [ -z "$V" ] && V="0.0.0"
+          V="${V#v}"
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "Building AltTab Free $V"
+
+      - name: Build (Release, unsigned)
+        run: |
+          xcodebuild -project alt-tab-macos.xcodeproj -scheme Release \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Stamp version + ad-hoc sign
+        run: |
+          APP="build/Build/Products/Release/AltTab.app"
+          PL="$APP/Contents/Info.plist"
+          V="${{ steps.ver.outputs.version }}"
+          # upstream leaves CFBundleVersion as $(CURRENT_PROJECT_VERSION); blank crashes on launch
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $V" "$PL" 2>/dev/null \
+            || /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string $V" "$PL"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $V" "$PL" 2>/dev/null \
+            || /usr/libexec/PlistBuddy -c "Add :CFBundleShortVersionString string $V" "$PL"
+          codesign --force --deep --sign - "$APP"
+
+      - name: Package DMG
+        id: dmg
+        run: |
+          V="${{ steps.ver.outputs.version }}"
+          APP="build/Build/Products/Release/AltTab.app"
+          NAME="AltTab-Free-$V.dmg"
+          mkdir -p dist/stage
+          cp -R "$APP" "dist/stage/AltTab Free.app"
+          ln -s /Applications "dist/stage/Applications"
+          hdiutil create -volname "AltTab Free" -srcfolder dist/stage \
+            -ov -format UDZO "$NAME"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          ls -lh "$NAME"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AltTab-Free-${{ steps.ver.outputs.version }}
+          path: ${{ steps.dmg.outputs.name }}
+          if-no-files-found: error
+
+      - name: Attach DMG to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.dmg.outputs.name }}

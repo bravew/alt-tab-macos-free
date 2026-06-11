@@ -174,19 +174,12 @@ class LicenseManager {
     }
 
     func computeState() -> LicenseState {
-        if keychain.value(account: Self.keychainKeyAccount) != nil {
-            let lastValidationResult = defaults.bool(forKey: "lastValidationResult")
-            guard lastValidationResult else { return .trialExpired }
-            if let variant = keychain.value(account: Self.keychainVariantAccount),
-               let maxVersion = Self.versionLimitedVariants[variant] {
-                let currentVersion = currentAppVersion()
-                if currentVersion.compare(maxVersion, options: .numeric) == .orderedDescending {
-                    return .proExpired
-                }
-            }
-            return .pro
-        }
-        return computeTrialState()
+        // Local fork: unconditionally treat this build as Pro. This is the single
+        // source of truth for `state`, so isProAvailable/isProLocked, all feature
+        // gates, the Day-X nag popups, and the UI badges all resolve to Pro. No
+        // server call is made (RemoteLicenseClient only runs when a license key
+        // exists in the keychain, which it never will here).
+        return .pro
     }
 
     private func computeTrialState() -> LicenseState {
