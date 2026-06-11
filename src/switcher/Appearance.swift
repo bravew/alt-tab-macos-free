@@ -73,6 +73,8 @@ class Appearance {
         } else {
             thumbnailsSize(isHorizontalScreen, size)
         }
+        windowCornerRadius *= Preferences.windowCornerRoundness
+        cellCornerRadius *= Preferences.windowCornerRoundness
     }
 
     private static func updateTheme() {

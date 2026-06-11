@@ -383,6 +383,7 @@ class AppearanceTab: NSObject {
     // setting instead of re-`NSLocalizedString`-ing them.
     static let labelSize = NSLocalizedString("Size", comment: "")
     static let labelTheme = NSLocalizedString("Theme", comment: "")
+    static let labelCornerRoundness = NSLocalizedString("Corner roundness", comment: "")
     static let labelShortcutStyle = NSLocalizedString("After keys are released", comment: "")
     static let labelPreviewSelectedWindow = NSLocalizedString("Preview selected window", comment: "")
 
@@ -495,6 +496,11 @@ class AppearanceTab: NSObject {
                 ControlsTab.syncOverrideControlsToGlobal()
                 refreshAllOverrideInfoLabels()
             }), makeOverrideIcon("appearanceThemeOverride")])
+        let roundnessSlider = LabelAndControl.makeLabelWithSlider("", "windowCornerRoundness", 0, 100, 11, true, "%", width: 180)
+        let roundnessIndicator = roundnessSlider[2] as! NSTextField
+        roundnessIndicator.alignment = .right
+        roundnessIndicator.fit(56, roundnessIndicator.fittingSize.height)
+        table.addRow(leftText: AppearanceTab.labelCornerRoundness, rightViews: [roundnessSlider[1], roundnessIndicator])
         addAfterKeysReleasedRow(table)
         addPreviewSelectedWindowRow(table)
         table.addRow(rightViews: customizeStyleButton)
