@@ -40,8 +40,10 @@ jobs:
       - name: Determine version
         id: ver
         run: |
-          # marketing version: highest upstream version tag
-          V="$(git tag --sort=-v:refname | grep -E '^v?[0-9]' | head -1 | sed 's/^v//')"
+          # marketing version: highest upstream version tag. Exact x.y.z match only —
+          # our own release tags are 4-component (vx.y.z.count) and must not count,
+          # or versions would compound on every release (v11.3.0.1857.1858...)
+          V="$(git tag --sort=-v:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -1 | sed 's/^v//')"
           [ -z "$V" ] && V="0.0.0"
           V="${V#v}"
           # build version: marketing + monotonic commit count, so Sparkle sees
