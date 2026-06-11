@@ -79,3 +79,5 @@ open "$DEST"
 
 echo "==> Done. '$APP_NAME' updated to $VERSION."
 echo "    Pro unlocked · auto-updater disabled · signed for stable permissions."
+
+# (fork build pipeline — see .github/workflows/build-dmg.yml)
