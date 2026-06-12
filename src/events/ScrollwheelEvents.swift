@@ -84,13 +84,18 @@ class ScrollwheelEvents {
 
     private static func cycleSelection(_ steps: Int) {
         // positive steps = scrollingDeltaY > 0 = the user scrolled down (with natural scrolling)
-        let goesUp = Preferences.scrollToSelectDirection == .reversed ? steps > 0 : steps < 0
+        let towardsPrevious = Preferences.scrollToSelectDirection == .reversed ? steps > 0 : steps < 0
         DispatchQueue.main.async {
             if Preferences.trackpadHapticFeedbackEnabled {
                 NSHapticFeedbackManager.defaultPerformer.perform(.generic, performanceTime: .default)
             }
+            // the titles style is a vertical list: scroll moves the selection up/down. The other
+            // styles lay tiles out in rows: scroll traverses them in reading order, wrapping
+            // across rows, like cycling with the shortcut key does
+            let isVerticalList = Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .titles
+            let direction: Direction = isVerticalList ? (towardsPrevious ? .up : .down) : (towardsPrevious ? .trailing : .leading)
             for _ in 0..<abs(steps) {
-                App.cycleSelection(goesUp ? .up : .down, allowWrap: false)
+                App.cycleSelection(direction, allowWrap: false)
             }
         }
     }
