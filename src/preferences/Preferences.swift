@@ -27,7 +27,8 @@ class Preferences {
             "appearanceSize": AppearanceSizePreference.auto.indexAsString,
             "appearanceTheme": AppearanceThemePreference.system.indexAsString,
             "windowCornerRoundness": "100",
-            "windowBackgroundOpacity": "100",
+            "windowOpacity": "100",
+            "backgroundTint": "0",
             "theme": ThemePreference.macOs.indexAsString,
             "showOnScreen": ShowOnScreenPreference.active.indexAsString,
             "titleTruncation": TitleTruncationPreference.end.indexAsString,
@@ -117,8 +118,10 @@ class Preferences {
     static var windowDisplayDelay: DispatchTimeInterval { DispatchTimeInterval.milliseconds(CachedUserDefaults.int("windowDisplayDelay")) }
     /// 0...1 multiplier applied to the theme's corner radii (1 = theme default roundness)
     static var windowCornerRoundness: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowCornerRoundness"), 0), 100)) / 100 }
-    /// 0...1 opacity of the switcher's background rectangle (1 = theme default opacity)
-    static var windowBackgroundOpacity: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowBackgroundOpacity"), 0), 100)) / 100 }
+    /// 0.1...1 opacity of the whole switcher window; clamped above 0 so the switcher can't become invisible
+    static var windowOpacity: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowOpacity"), 10), 100)) / 100 }
+    /// 0...1 strength of the extra tint layered on the switcher's background rectangle (0 = theme default look)
+    static var backgroundTint: CGFloat { CGFloat(min(max(CachedUserDefaults.int("backgroundTint"), 0), 100)) / 100 }
     static var fadeOutAnimation: Bool { CachedUserDefaults.bool("fadeOutAnimation") }
     static var previewFadeInAnimation: Bool { CachedUserDefaults.bool("previewFadeInAnimation") }
     static var hideSpaceNumberLabels: Bool { CachedUserDefaults.bool("hideSpaceNumberLabels") }

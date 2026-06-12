@@ -34,34 +34,43 @@ class LiquidGlassEffectView: NSGlassEffectView, EffectView {
 
     func updateAppearance() {
         cornerRadius = Appearance.windowCornerRadius
+        tintColor = Appearance.backgroundTintColor
     }
 }
 
 class FrostedGlassEffectView: NSVisualEffectView, EffectView {
+    /// lowest subview; carries the user's extra background tint on top of the material, below the panel content
+    private let tintView = NSView()
+
     convenience init(_: Int?) {
         self.init()
         blendingMode = .behindWindow
         state = .active
         wantsLayer = true
+        tintView.wantsLayer = true
+        tintView.autoresizingMask = [.width, .height]
+        addSubview(tintView)
         updateAppearance()
     }
 
     func updateAppearance() {
         material = Appearance.material
-        updateMask(Appearance.windowCornerRadius, Preferences.windowBackgroundOpacity)
+        updateRoundedCorners(Appearance.windowCornerRadius)
+        tintView.frame = bounds
+        tintView.layer!.cornerRadius = Appearance.windowCornerRadius
+        tintView.layer!.backgroundColor = Appearance.backgroundTintColor?.cgColor ?? NSColor.clear.cgColor
     }
 
     /// using layer!.cornerRadius works but the corners are aliased; this custom approach gives smooth rounded corners
     /// see https://stackoverflow.com/a/29386935/2249756
-    /// the mask alpha only dims the material, not the subviews, so it doubles as the background opacity control
-    private func updateMask(_ cornerRadius: CGFloat, _ opacity: CGFloat) {
-        if cornerRadius == 0 && opacity == 1 {
+    private func updateRoundedCorners(_ cornerRadius: CGFloat) {
+        if cornerRadius == 0 {
             maskImage = nil
         } else {
             let edgeLength = 2.0 * cornerRadius + 1.0
             let mask = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
                 let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
-                NSColor.black.withAlphaComponent(opacity).set()
+                NSColor.black.set()
                 bezierPath.fill()
                 return true
             }
@@ -84,10 +93,6 @@ enum EffectViewKind {
 
 func requiredEffectViewKind() -> EffectViewKind {
     if #available(macOS 26.0, *) {
-        // NSGlassEffectView can't render its glass partially transparent, so a lowered opacity uses the frosted look
-        if Preferences.windowBackgroundOpacity < 1 {
-            return .frosted
-        }
         if Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .appIcons,
            LiquidGlassEffectView.canUsePrivateLiquidGlassLook() {
             return .liquidGlassClear

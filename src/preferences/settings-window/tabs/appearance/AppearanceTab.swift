@@ -384,7 +384,8 @@ class AppearanceTab: NSObject {
     static let labelSize = NSLocalizedString("Size", comment: "")
     static let labelTheme = NSLocalizedString("Theme", comment: "")
     static let labelCornerRoundness = NSLocalizedString("Corner roundness", comment: "")
-    static let labelBackgroundOpacity = NSLocalizedString("Background opacity", comment: "")
+    static let labelWindowOpacity = NSLocalizedString("Window opacity", comment: "")
+    static let labelBackgroundTint = NSLocalizedString("Background tint", comment: "")
     static let labelShortcutStyle = NSLocalizedString("After keys are released", comment: "")
     static let labelPreviewSelectedWindow = NSLocalizedString("Preview selected window", comment: "")
 
@@ -502,11 +503,16 @@ class AppearanceTab: NSObject {
         roundnessIndicator.alignment = .right
         roundnessIndicator.fit(56, roundnessIndicator.fittingSize.height)
         table.addRow(leftText: AppearanceTab.labelCornerRoundness, rightViews: [roundnessSlider[1], roundnessIndicator])
-        let backgroundOpacitySlider = LabelAndControl.makeLabelWithSlider("", "windowBackgroundOpacity", 0, 100, 11, true, "%", width: 180)
-        let backgroundOpacityIndicator = backgroundOpacitySlider[2] as! NSTextField
-        backgroundOpacityIndicator.alignment = .right
-        backgroundOpacityIndicator.fit(56, backgroundOpacityIndicator.fittingSize.height)
-        table.addRow(leftText: AppearanceTab.labelBackgroundOpacity, rightViews: [backgroundOpacitySlider[1], backgroundOpacityIndicator])
+        let windowOpacitySlider = LabelAndControl.makeLabelWithSlider("", "windowOpacity", 10, 100, 10, true, "%", width: 180)
+        let windowOpacityIndicator = windowOpacitySlider[2] as! NSTextField
+        windowOpacityIndicator.alignment = .right
+        windowOpacityIndicator.fit(56, windowOpacityIndicator.fittingSize.height)
+        table.addRow(leftText: AppearanceTab.labelWindowOpacity, rightViews: [windowOpacitySlider[1], windowOpacityIndicator])
+        let backgroundTintSlider = LabelAndControl.makeLabelWithSlider("", "backgroundTint", 0, 100, 11, true, "%", width: 180)
+        let backgroundTintIndicator = backgroundTintSlider[2] as! NSTextField
+        backgroundTintIndicator.alignment = .right
+        backgroundTintIndicator.fit(56, backgroundTintIndicator.fittingSize.height)
+        table.addRow(leftText: AppearanceTab.labelBackgroundTint, rightViews: [backgroundTintSlider[1], backgroundTintIndicator])
         addAfterKeysReleasedRow(table)
         addPreviewSelectedWindowRow(table)
         table.addRow(rightViews: customizeStyleButton)

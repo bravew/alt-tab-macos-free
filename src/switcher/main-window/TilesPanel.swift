@@ -89,7 +89,7 @@ class TilesPanel: NSPanel {
         // The panel may have been hidden (alpha=0) by `App.showUiOrCycleSelection` on a
         // cross-shortcut summon to mask the rebuild. Reveal it atomically now that contents
         // and Appearance are in their final state.
-        alphaValue = 1
+        alphaValue = Preferences.windowOpacity
         makeKeyAndOrderFront(nil)
         ContextMenuEvents.toggle(true)
         CursorEvents.toggle(true)

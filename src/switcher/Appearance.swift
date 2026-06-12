@@ -36,6 +36,12 @@ class Appearance {
     static var highlightHoveredBorderColor: NSColor { get { NSColor.systemAccentColor.withAlphaComponent(0.7) } }
     static var searchMatchHighlightColor: NSColor { get { NSColor.systemYellow.withAlphaComponent(0.5) } }
     static var searchMatchForegroundColor: NSColor { get { NSColor(calibratedWhite: 0.12, alpha: 1) } }
+    /// extra tint layered on the panel background; nil when the user keeps the theme default look
+    static var backgroundTintColor: NSColor? {
+        let tint = Preferences.backgroundTint
+        guard tint > 0 else { return nil }
+        return (currentTheme == .dark ? NSColor.black : .white).withAlphaComponent(tint)
+    }
 
     private static var currentStyle: AppearanceStylePreference { Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) }
     private static var currentSize: AppearanceSizePreference { Preferences.effectiveAppearanceSize(SwitcherSession.activeShortcutIndex) }
