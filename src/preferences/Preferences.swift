@@ -120,8 +120,9 @@ class Preferences {
     static var windowCornerRoundness: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowCornerRoundness"), 0), 100)) / 100 }
     /// 0.1...1 opacity of the whole switcher window; clamped above 0 so the switcher can't become invisible
     static var windowOpacity: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowOpacity"), 10), 100)) / 100 }
-    /// 0...1 strength of the extra tint layered on the switcher's background rectangle (0 = theme default look)
-    static var backgroundTint: CGFloat { CGFloat(min(max(CachedUserDefaults.int("backgroundTint"), 0), 100)) / 100 }
+    /// -1...1 tint of the switcher's background rectangle (0 = theme default look,
+    /// positive = extra theme-colored tint, negative = strip the material toward fully transparent)
+    static var backgroundTint: CGFloat { CGFloat(min(max(CachedUserDefaults.int("backgroundTint"), -100), 100)) / 100 }
     static var fadeOutAnimation: Bool { CachedUserDefaults.bool("fadeOutAnimation") }
     static var previewFadeInAnimation: Bool { CachedUserDefaults.bool("previewFadeInAnimation") }
     static var hideSpaceNumberLabels: Bool { CachedUserDefaults.bool("hideSpaceNumberLabels") }

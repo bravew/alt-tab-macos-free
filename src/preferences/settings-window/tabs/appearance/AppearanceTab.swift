@@ -508,10 +508,10 @@ class AppearanceTab: NSObject {
         windowOpacityIndicator.alignment = .right
         windowOpacityIndicator.fit(56, windowOpacityIndicator.fittingSize.height)
         table.addRow(leftText: AppearanceTab.labelWindowOpacity, rightViews: [windowOpacitySlider[1], windowOpacityIndicator])
-        let backgroundTintSlider = LabelAndControl.makeLabelWithSlider("", "backgroundTint", 0, 100, 11, true, "%", width: 180)
+        let backgroundTintSlider = LabelAndControl.makeLabelWithSlider("", "backgroundTint", -100, 100, 21, true, "%", width: 180)
         let backgroundTintIndicator = backgroundTintSlider[2] as! NSTextField
         backgroundTintIndicator.alignment = .right
-        backgroundTintIndicator.fit(56, backgroundTintIndicator.fittingSize.height)
+        backgroundTintIndicator.fit(62, backgroundTintIndicator.fittingSize.height)
         table.addRow(leftText: AppearanceTab.labelBackgroundTint, rightViews: [backgroundTintSlider[1], backgroundTintIndicator])
         addAfterKeysReleasedRow(table)
         addPreviewSelectedWindowRow(table)

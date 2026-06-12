@@ -34,7 +34,22 @@ class LiquidGlassEffectView: NSGlassEffectView, EffectView {
 
     func updateAppearance() {
         cornerRadius = Appearance.windowCornerRadius
-        tintColor = Appearance.backgroundTintColor
+        tintColor = resolvedTintColor()
+    }
+
+    /// the glass material itself has only 2 levels (regular, clear); negative tint shows the clear variant
+    /// and ramps a theme-colored tint from 0 (at -100%) back toward the regular look (near 0%)
+    private func resolvedTintColor() -> NSColor? {
+        let tint = Preferences.backgroundTint
+        if tint >= 0 || isStockClearLook() {
+            return Appearance.backgroundTintColor
+        }
+        return Appearance.backgroundTintBaseColor.withAlphaComponent((1 + tint) * 0.5)
+    }
+
+    /// app icons style already uses the clear variant at 0% tint; it has no material left to strip
+    private func isStockClearLook() -> Bool {
+        Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .appIcons && Self.canUsePrivateLiquidGlassLook()
     }
 }
 
@@ -55,7 +70,8 @@ class FrostedGlassEffectView: NSVisualEffectView, EffectView {
 
     func updateAppearance() {
         material = Appearance.material
-        updateRoundedCorners(Appearance.windowCornerRadius)
+        // negative tint strips the material itself; the mask alpha only dims the material, not the subviews
+        updateMask(Appearance.windowCornerRadius, 1 + min(Preferences.backgroundTint, 0))
         tintView.frame = bounds
         tintView.layer!.cornerRadius = Appearance.windowCornerRadius
         tintView.layer!.backgroundColor = Appearance.backgroundTintColor?.cgColor ?? NSColor.clear.cgColor
@@ -63,14 +79,14 @@ class FrostedGlassEffectView: NSVisualEffectView, EffectView {
 
     /// using layer!.cornerRadius works but the corners are aliased; this custom approach gives smooth rounded corners
     /// see https://stackoverflow.com/a/29386935/2249756
-    private func updateRoundedCorners(_ cornerRadius: CGFloat) {
-        if cornerRadius == 0 {
+    private func updateMask(_ cornerRadius: CGFloat, _ materialAlpha: CGFloat) {
+        if cornerRadius == 0 && materialAlpha == 1 {
             maskImage = nil
         } else {
             let edgeLength = 2.0 * cornerRadius + 1.0
             let mask = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
                 let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
-                NSColor.black.set()
+                NSColor.black.withAlphaComponent(materialAlpha).set()
                 bezierPath.fill()
                 return true
             }
@@ -95,6 +111,10 @@ func requiredEffectViewKind() -> EffectViewKind {
     if #available(macOS 26.0, *) {
         if Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .appIcons,
            LiquidGlassEffectView.canUsePrivateLiquidGlassLook() {
+            return .liquidGlassClear
+        }
+        // negative tint strips material; the clear variant is the most transparent glass available
+        if Preferences.backgroundTint < 0 {
             return .liquidGlassClear
         }
         return .liquidGlassRegular
