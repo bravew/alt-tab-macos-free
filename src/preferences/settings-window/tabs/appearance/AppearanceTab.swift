@@ -388,6 +388,8 @@ class AppearanceTab: NSObject {
     static let labelBackgroundTint = NSLocalizedString("Background tint", comment: "")
     static let labelShortcutStyle = NSLocalizedString("After keys are released", comment: "")
     static let labelPreviewSelectedWindow = NSLocalizedString("Preview selected window", comment: "")
+    static let labelPreviewBesideList = NSLocalizedString("Preview next to the window list", comment: "")
+    static let subLabelPreviewBesideList = NSLocalizedString("Only applies to the Titles style", comment: "")
 
     static var customizeStyleButton: NSButton!
     static var animationsButton: NSButton!
@@ -515,6 +517,7 @@ class AppearanceTab: NSObject {
         table.addRow(leftText: AppearanceTab.labelBackgroundTint, rightViews: [backgroundTintSlider[1], backgroundTintIndicator])
         addAfterKeysReleasedRow(table)
         addPreviewSelectedWindowRow(table)
+        addPreviewBesideListRow(table)
         table.addRow(rightViews: customizeStyleButton)
         refreshAllOverrideInfoLabels()
         return table
@@ -639,6 +642,12 @@ class AppearanceTab: NSObject {
         })
         _ = table.addRow(leftText: AppearanceTab.labelPreviewSelectedWindow,
             rightViews: [switchControl, makeOverrideIcon("previewFocusedWindowOverride")])
+    }
+
+    private static func addPreviewBesideListRow(_ table: TableGroupView) {
+        let switchControl = LabelAndControl.makeSwitch("previewBesideList")
+        _ = table.addRow(leftText: AppearanceTab.labelPreviewBesideList, rightViews: [switchControl],
+            subText: AppearanceTab.subLabelPreviewBesideList)
     }
 
     private static func makeMultipleScreensView() -> NSView {

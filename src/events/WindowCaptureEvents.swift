@@ -302,7 +302,7 @@ extension SCStreamConfiguration {
         // Use full-resolution capture if any shortcut has preview-selected-window enabled (could be
         // the global or a per-shortcut override). Background captures aren't tied to a specific
         // shortcut, so we err on the side of full-res when any shortcut might need it.
-        let anyPreview = (0...Preferences.maxShortcutCount).contains { Preferences.effectivePreviewSelectedWindow($0) }
+        let anyPreview = (0...Preferences.maxShortcutCount).contains { Preferences.effectivePreviewSelectedWindow($0) || Preferences.effectivePreviewBesideList($0) }
         if anyPreview {
             width = Int(originalSize.width)
             height = Int(originalSize.height)

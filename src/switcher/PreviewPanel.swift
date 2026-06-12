@@ -29,10 +29,11 @@ class PreviewPanel: NSPanel {
         Self.shared = self
     }
 
-    static func show(_ id: CGWindowID, _ preview: CALayerContents, _ position: CGPoint, _ size: CGSize) {
-        repositionAndResize(position, size)
+    /// `frame` is in Cocoa screen coordinates; callers convert from Quartz when needed
+    static func show(_ id: CGWindowID, _ preview: CALayerContents, _ frame: NSRect) {
+        Self.shared.setFrame(frame, display: false)
         if id != currentId {
-            previewView.updateContents(preview, size)
+            previewView.updateContents(preview, frame.size)
         }
         if id != currentId || !Self.shared.isVisible {
             if Preferences.previewFadeInAnimation {
@@ -53,10 +54,10 @@ class PreviewPanel: NSPanel {
         }
     }
 
-    static func updateIfShowing(_ id: CGWindowID?,  _ preview: CALayerContents, _ position: CGPoint, _ size: CGSize) {
+    static func updateIfShowing(_ id: CGWindowID?,  _ preview: CALayerContents, _ frame: NSRect) {
         if Self.shared.isVisible && id == currentId {
-            repositionAndResize(position, size)
-            previewView.updateContents(preview, size)
+            Self.shared.setFrame(frame, display: false)
+            previewView.updateContents(preview, frame.size)
         }
     }
 
@@ -71,13 +72,6 @@ class PreviewPanel: NSPanel {
         }
     }
 
-    private static func repositionAndResize( _ position: CGPoint, _ size: CGSize) {
-        var frame = NSRect(origin: position, size: size)
-        // Flip Y coordinate from Quartz (0,0 at bottom-left) to Cocoa coordinates (0,0 at top-left)
-        // Always use the primary screen as reference since all coordinates are relative to it
-        frame.origin.y = NSScreen.screens.first!.frame.maxY - frame.maxY
-        Self.shared.setFrame(frame, display: false)
-    }
 }
 
 private class BorderView: NSView {

@@ -46,6 +46,7 @@ class Preferences {
             "hideSpaceNumberLabels": "false",
             "hideStatusIcons": "false",
             "previewFocusedWindow": "false",
+            "previewBesideList": "false",
             "captureWindowsInBackground": "true",
             "screenRecordingPermissionSkipped": "false",
             "trackpadHapticFeedbackEnabled": "true",
@@ -131,6 +132,7 @@ class Preferences {
     static var startAtLogin: Bool { CachedUserDefaults.bool("startAtLogin") }
     static var exceptions: [ExceptionEntry] { CachedUserDefaults.json("exceptions", [ExceptionEntry].self) }
     static var previewSelectedWindow: Bool { CachedUserDefaults.bool("previewFocusedWindow") }
+    static var previewBesideList: Bool { CachedUserDefaults.bool("previewBesideList") }
     static var captureWindowsInBackground: Bool { CachedUserDefaults.bool("captureWindowsInBackground") }
     static var screenRecordingPermissionSkipped: Bool { CachedUserDefaults.bool("screenRecordingPermissionSkipped") }
     static var settingsWindowShownOnFirstLaunch: Bool { CachedUserDefaults.bool("settingsWindowShownOnFirstLaunch") }
@@ -346,6 +348,12 @@ class Preferences {
         return CachedUserDefaults.bool(indexToName("previewFocusedWindowOverride", index))
     }
 
+    /// DockDoor-style preview docked next to the switcher. Global toggle; only meaningful with
+    /// the Titles style, where tiles show no thumbnail
+    static func effectivePreviewBesideList(_ index: Int) -> Bool {
+        return previewBesideList && effectiveAppearanceStyle(index) == .titles
+    }
+
     /// Which Screen-Recording-dependent features any shortcut's effective settings rely on: the
     /// Thumbnails appearance style (window screenshots) and/or the "preview selected window" overlay.
     /// These are the only features needing the permission, so when none are configured the menubar
@@ -358,7 +366,7 @@ class Preferences {
         var usesPreviews = false
         for index in 0...maxShortcutCount {
             usesThumbnails = usesThumbnails || effectiveAppearanceStyle(index) == .thumbnails
-            usesPreviews = usesPreviews || effectivePreviewSelectedWindow(index)
+            usesPreviews = usesPreviews || effectivePreviewSelectedWindow(index) || effectivePreviewBesideList(index)
             if usesThumbnails && usesPreviews { break }
         }
         return PermissionCalloutResolver.dependentFeatures(usesThumbnails: usesThumbnails, usesPreviews: usesPreviews)

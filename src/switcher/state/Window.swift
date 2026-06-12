@@ -152,7 +152,7 @@ class Window {
     func refreshThumbnail(_ screenshot: CALayerContents) {
         thumbnail = screenshot
         if !SwitcherSession.isActive || !shouldShowTheUser { return }
-        if let position, let size,
+        if let size,
            let view = (TilesView.recycledViews.first { $0.window_?.cgWindowId == cgWindowId }) {
             if !view.thumbnail.isHidden {
                 let thumbnailSize = TileView.thumbnailSize(size, false)
@@ -163,8 +163,8 @@ class Window {
                     App.refreshOpenUiAfterExternalEvent([])
                 }
             }
-            PreviewPanel.updateIfShowing(cgWindowId, screenshot, position, size)
         }
+        WindowThumbnails.refreshPreviewAfterScreenshot(self)
     }
 
     func canBeClosed() -> Bool {
