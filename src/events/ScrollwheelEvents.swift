@@ -4,7 +4,8 @@ class ScrollwheelEvents {
     static var shouldBeEnabled: Bool!
     private static var eventTap: CFMachPort!
     // accumulated precise (trackpad) scroll distance not yet converted into selection steps
-    private static var scrollAccumulator = CGFloat(0)
+    private static var scrollAccumulatorX = CGFloat(0)
+    private static var scrollAccumulatorY = CGFloat(0)
     private static let pixelsPerSelectionStep = CGFloat(50)
 
     static func observe() {
@@ -15,7 +16,8 @@ class ScrollwheelEvents {
     static func toggle(_ enabled: Bool) {
         guard enabled != shouldBeEnabled else { return }
         shouldBeEnabled = enabled
-        scrollAccumulator = 0
+        scrollAccumulatorX = 0
+        scrollAccumulatorY = 0
         if let eventTap {
             CGEvent.tapEnable(tap: eventTap, enable: enabled)
         }
@@ -59,41 +61,52 @@ class ScrollwheelEvents {
         return Unmanaged.passUnretained(cgEvent) // focused app will receive the event
     }
 
-    /// the selection follows the scroll direction (or the opposite, per the direction setting).
-    /// Trackpads accumulate precise pixel deltas so a continuous swipe steps through the list;
+    /// the selection follows the scroll direction (or the opposite, per the direction setting),
+    /// on both axes: vertical scroll moves up/down, horizontal scroll moves left/right.
+    /// Trackpads accumulate precise pixel deltas so a continuous swipe steps through the tiles;
     /// mouse wheels step once per notch
     private static func handleSelectionScroll(_ cgEvent: CGEvent) -> Bool {
         guard let nsEvent = cgEvent.toNSEvent() else { return false }
-        let delta = nsEvent.scrollingDeltaY
         if nsEvent.hasPreciseScrollingDeltas {
-            if delta * scrollAccumulator < 0 {
-                // direction flipped; discard leftover momentum so the selection turns around instantly
-                scrollAccumulator = 0
-            }
-            scrollAccumulator += delta
-            let steps = Int(scrollAccumulator / pixelsPerSelectionStep)
-            if steps != 0 {
-                scrollAccumulator -= CGFloat(steps) * pixelsPerSelectionStep
-                cycleSelection(steps)
-            }
-        } else if delta != 0 {
-            cycleSelection(delta > 0 ? 1 : -1)
+            accumulateThenCycle(&scrollAccumulatorY, nsEvent.scrollingDeltaY, horizontal: false)
+            accumulateThenCycle(&scrollAccumulatorX, nsEvent.scrollingDeltaX, horizontal: true)
+        } else if nsEvent.scrollingDeltaY != 0 {
+            cycleSelection(nsEvent.scrollingDeltaY > 0 ? 1 : -1, horizontal: false)
+        } else if nsEvent.scrollingDeltaX != 0 {
+            cycleSelection(nsEvent.scrollingDeltaX > 0 ? 1 : -1, horizontal: true)
         }
         return true
     }
 
-    private static func cycleSelection(_ steps: Int) {
-        // positive steps = scrollingDeltaY > 0 = the user scrolled down (with natural scrolling)
-        let towardsPrevious = Preferences.scrollToSelectDirection == .reversed ? steps > 0 : steps < 0
+    private static func accumulateThenCycle(_ accumulator: inout CGFloat, _ delta: CGFloat, horizontal: Bool) {
+        if delta * accumulator < 0 {
+            // direction flipped; discard leftover momentum so the selection turns around instantly
+            accumulator = 0
+        }
+        accumulator += delta
+        let steps = Int(accumulator / pixelsPerSelectionStep)
+        if steps != 0 {
+            accumulator -= CGFloat(steps) * pixelsPerSelectionStep
+            cycleSelection(steps, horizontal: horizontal)
+        }
+    }
+
+    private static func cycleSelection(_ steps: Int, horizontal: Bool) {
+        // positive steps = positive scrollingDelta = the user scrolled down/right (with natural scrolling)
+        var towardsNext = steps > 0
+        if Preferences.scrollToSelectDirection == .reversed {
+            towardsNext.toggle()
+        }
         DispatchQueue.main.async {
+            // the titles style is a vertical list: only vertical scroll moves the selection.
+            // The other styles lay tiles out in rows: vertical scroll moves between rows,
+            // horizontal scroll moves through the tiles, wrapping across rows
+            let isVerticalList = Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .titles
+            guard !(isVerticalList && horizontal) else { return }
             if Preferences.trackpadHapticFeedbackEnabled {
                 NSHapticFeedbackManager.defaultPerformer.perform(.generic, performanceTime: .default)
             }
-            // the titles style is a vertical list: scroll moves the selection up/down. The other
-            // styles lay tiles out in rows: scroll traverses them in reading order, wrapping
-            // across rows, like cycling with the shortcut key does
-            let isVerticalList = Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .titles
-            let direction: Direction = isVerticalList ? (towardsPrevious ? .up : .down) : (towardsPrevious ? .trailing : .leading)
+            let direction: Direction = horizontal ? (towardsNext ? .right : .left) : (towardsNext ? .down : .up)
             for _ in 0..<abs(steps) {
                 App.cycleSelection(direction, allowWrap: false)
             }
