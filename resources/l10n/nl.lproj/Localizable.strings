@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "Zoeken — vind een venster door te typen";
 "Select next window" = "Selecteer volgend venster";
 "Select previous window" = "Selecteer vorig venster";
+"Select windows by scrolling" = "Vensters selecteren door te scrollen";
 "Select windows on mouse hover" = "Vensters selecteren bij aanwijzen met muis";
 "Select windows using arrow keys" = "Vensters selecteren met pijltjestoetsen";
 "Select windows using vim keys" = "Vensters selecteren met Vim-toetsen";

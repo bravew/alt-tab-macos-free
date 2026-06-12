@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "Arama — yazarak bir pencere bul";
 "Select next window" = "Sonraki pencereyi seç";
 "Select previous window" = "Önceki pencereyi seç";
+"Select windows by scrolling" = "Kaydırarak pencere seç";
 "Select windows on mouse hover" = "Fare üzerine geldiğinde pencereleri seç";
 "Select windows using arrow keys" = "Pencereleri ok tuşlarıyla seç";
 "Select windows using vim keys" = "Pencereleri Vim tuşlarıyla seç";

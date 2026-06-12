@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "Pencarian — temukan jendela dengan mengetik";
 "Select next window" = "Pilih jendela berikutnya";
 "Select previous window" = "Pilih jendela sebelumnya";
+"Select windows by scrolling" = "Pilih jendela dengan menggulir";
 "Select windows on mouse hover" = "Pilih jendela saat kursor diarahkan";
 "Select windows using arrow keys" = "Pilih jendela menggunakan tombol panah";
 "Select windows using vim keys" = "Pilih jendela menggunakan tombol Vim";

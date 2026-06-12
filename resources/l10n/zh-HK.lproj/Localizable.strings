@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "搜尋 — 輸入文字尋找視窗";
 "Select next window" = "選取下一個視窗";
 "Select previous window" = "選取上一個視窗";
+"Select windows by scrolling" = "透過捲動選擇視窗";
 "Select windows on mouse hover" = "滑鼠懸停時選取視窗";
 "Select windows using arrow keys" = "使用方向鍵選取視窗";
 "Select windows using vim keys" = "使用 Vim 按鍵選取視窗";

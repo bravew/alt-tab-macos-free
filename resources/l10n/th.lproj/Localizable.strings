@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "ค้นหา — ค้นหาหน้าต่างด้วยการพิมพ์";
 "Select next window" = "เลือกหน้าต่างถัดไป";
 "Select previous window" = "เลือกหน้าต่างก่อนหน้า";
+"Select windows by scrolling" = "เลือกหน้าต่างด้วยการเลื่อน";
 "Select windows on mouse hover" = "เลือกหน้าต่างเมื่อชี้เมาส์";
 "Select windows using arrow keys" = "เลือกหน้าต่างโดยใช้ปุ่มลูกศร";
 "Select windows using vim keys" = "เลือกหน้าต่างโดยใช้ปุ่ม Vim";

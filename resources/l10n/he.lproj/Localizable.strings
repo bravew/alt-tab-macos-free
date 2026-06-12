@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "חיפוש — מצא חלון בהקלדה";
 "Select next window" = "בחר בחלון הבא";
 "Select previous window" = "בחר בחלון הקודם";
+"Select windows by scrolling" = "בחירת חלונות באמצעות גלילה";
 "Select windows on mouse hover" = "בחר חלונות בעת ריחוף עכבר";
 "Select windows using arrow keys" = "בחר חלונות באמצעות מקשי חצים";
 "Select windows using vim keys" = "בחר חלונות באמצעות מקשי Vim";

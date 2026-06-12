@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "البحث — العثور على نافذة بالكتابة";
 "Select next window" = "تحديد النافذة التالية";
 "Select previous window" = "تحديد النافذة السابقة";
+"Select windows by scrolling" = "تحديد النوافذ بالتمرير";
 "Select windows on mouse hover" = "تحديد النوافذ عند تمرير الفأرة";
 "Select windows using arrow keys" = "تحديد النوافذ باستخدام مفاتيح الأسهم";
 "Select windows using vim keys" = "تحديد النوافذ باستخدام مفاتيح Vim";

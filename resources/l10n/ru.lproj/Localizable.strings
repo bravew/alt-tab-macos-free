@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "Поиск — найдите окно по тексту";
 "Select next window" = "Выбрать следующее окно";
 "Select previous window" = "Выбрать предыдущее окно";
+"Select windows by scrolling" = "Выбор окон прокруткой";
 "Select windows on mouse hover" = "Выбирать окна при наведении курсора";
 "Select windows using arrow keys" = "Выбирать окна клавишами со стрелками";
 "Select windows using vim keys" = "Выбирать окна клавишами Vim";

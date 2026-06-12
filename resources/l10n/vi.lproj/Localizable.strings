@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "Tìm kiếm — tìm một cửa sổ bằng cách nhập";
 "Select next window" = "Chọn cửa sổ kế tiếp";
 "Select previous window" = "Chọn cửa sổ trước đó";
+"Select windows by scrolling" = "Chọn cửa sổ bằng cách cuộn";
 "Select windows on mouse hover" = "Chọn cửa sổ khi di chuột";
 "Select windows using arrow keys" = "Chọn cửa sổ bằng phím mũi tên";
 "Select windows using vim keys" = "Chọn cửa sổ bằng phím Vim";

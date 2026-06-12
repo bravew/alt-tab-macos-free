@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "Recherche — trouvez une fenêtre en saisissant";
 "Select next window" = "Sélectionner la fenêtre suivante";
 "Select previous window" = "Sélectionner la fenêtre précédente";
+"Select windows by scrolling" = "Sélectionner les fenêtres en faisant défiler";
 "Select windows on mouse hover" = "Sélectionner les fenêtres au survol de la souris";
 "Select windows using arrow keys" = "Sélectionner les fenêtres avec les touches fléchées";
 "Select windows using vim keys" = "Sélectionner les fenêtres avec les touches Vim";

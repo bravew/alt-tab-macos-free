@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "検索 — 入力してウインドウを探す";
 "Select next window" = "次のウインドウを選択";
 "Select previous window" = "前のウインドウを選択";
+"Select windows by scrolling" = "スクロールでウインドウを選択";
 "Select windows on mouse hover" = "マウスホバーでウインドウを選択";
 "Select windows using arrow keys" = "矢印キーでウインドウを選択";
 "Select windows using vim keys" = "Vim キーでウインドウを選択";

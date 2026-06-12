@@ -210,6 +210,7 @@
 "Search — find a window by typing" = "검색 — 입력하여 윈도우 찾기";
 "Select next window" = "다음 윈도우 선택";
 "Select previous window" = "이전 윈도우 선택";
+"Select windows by scrolling" = "스크롤로 윈도우 선택";
 "Select windows on mouse hover" = "마우스 오버 시 윈도우 선택";
 "Select windows using arrow keys" = "화살표 키로 윈도우 선택";
 "Select windows using vim keys" = "Vim 키로 윈도우 선택";
