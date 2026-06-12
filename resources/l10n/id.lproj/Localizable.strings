@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Setel ulang pengaturan dan mulai ulang";
 "Reset settings and restart…" = "Setel ulang pengaturan dan mulai ulang…";
 "Restart Now" = "Mulai Ulang Sekarang";
+"Reversed" = "Terbalik";
 "Screen including menu bar" = "Layar termasuk bilah menu";
 "Screen including mouse" = "Layar termasuk tetikus";
 "Screen Recording" = "Perekaman Layar";
 "Screen showing AltTab" = "Layar yang menampilkan AltTab";
+"Scrolling direction" = "Arah pengguliran";
 "Search" = "Cari";
 "Search is a Pro feature." = "Pencarian adalah fitur Pro.";
 "Search windows by typing" = "Cari jendela dengan mengetik";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Beberapa fitur Pro telah kembali ke bawaan gratis.";
 "Source code" = "Kode sumber";
 "Space Order" = "Urutan Ruang";
+"Standard" = "Standar";
 "Start" = "Mulai";
 "Start at login" = "Jalankan saat masuk";
 "Start my 14-day trial" = "Mulai uji coba 14 hari saya";

@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Återställ inställningar och starta om";
 "Reset settings and restart…" = "Återställ inställningar och starta om…";
 "Restart Now" = "Starta om nu";
+"Reversed" = "Omvänd";
 "Screen including menu bar" = "Skärm som innehåller menyraden";
 "Screen including mouse" = "Skärm som innehåller musen";
 "Screen Recording" = "Skärminspelning";
 "Screen showing AltTab" = "Skärm som visar AltTab";
+"Scrolling direction" = "Rullningsriktning";
 "Search" = "Sök";
 "Search is a Pro feature." = "Sök är en Pro-funktion.";
 "Search windows by typing" = "Sök fönster genom att skriva";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Vissa Pro-funktioner har återgått till gratisstandarden.";
 "Source code" = "Källkod";
 "Space Order" = "Skrivbordsordning";
+"Standard" = "Standard";
 "Start" = "Start";
 "Start at login" = "Starta vid inloggning";
 "Start my 14-day trial" = "Starta min 14-dagars provperiod";

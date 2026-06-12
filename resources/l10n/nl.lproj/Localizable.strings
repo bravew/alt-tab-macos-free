@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Instellingen herstellen en herstarten";
 "Reset settings and restart…" = "Instellingen herstellen en herstarten…";
 "Restart Now" = "Herstart nu";
+"Reversed" = "Omgekeerd";
 "Screen including menu bar" = "Scherm met menubalk";
 "Screen including mouse" = "Scherm met muis";
 "Screen Recording" = "Schermopname";
 "Screen showing AltTab" = "Scherm dat AltTab toont";
+"Scrolling direction" = "Scrolrichting";
 "Search" = "Zoeken";
 "Search is a Pro feature." = "Zoeken is een Pro-functie.";
 "Search windows by typing" = "Vensters zoeken door te typen";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Sommige Pro-functies zijn teruggezet naar de gratis standaardwaarden.";
 "Source code" = "Broncode";
 "Space Order" = "Volgorde van Spaces";
+"Standard" = "Standaard";
 "Start" = "Start";
 "Start at login" = "Starten bij inloggen";
 "Start my 14-day trial" = "Mijn proefperiode van 14 dagen starten";

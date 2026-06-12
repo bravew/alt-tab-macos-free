@@ -200,10 +200,12 @@
 "Reset settings and restart" = "إعادة تعيين الإعدادات وإعادة التشغيل";
 "Reset settings and restart…" = "إعادة تعيين الإعدادات وإعادة التشغيل…";
 "Restart Now" = "إعادة التشغيل الآن";
+"Reversed" = "معكوس";
 "Screen including menu bar" = "الشاشة التي تتضمن شريط القائمة";
 "Screen including mouse" = "الشاشة التي تتضمن الفأرة";
 "Screen Recording" = "تسجيل الشاشة";
 "Screen showing AltTab" = "الشاشة التي تعرض AltTab";
+"Scrolling direction" = "اتجاه التمرير";
 "Search" = "البحث";
 "Search is a Pro feature." = "البحث ميزة من ميزات Pro.";
 "Search windows by typing" = "البحث في النوافذ بالكتابة";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "عادت بعض ميزات Pro إلى الإعدادات الافتراضية المجانية.";
 "Source code" = "الكود المصدري";
 "Space Order" = "ترتيب المساحات";
+"Standard" = "قياسي";
 "Start" = "البداية";
 "Start at login" = "البدء عند تسجيل الدخول";
 "Start my 14-day trial" = "بدء التجربة المجانية لمدة 14 يومًا";

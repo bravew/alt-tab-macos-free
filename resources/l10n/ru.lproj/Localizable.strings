@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Сбросить настройки и перезапустить";
 "Reset settings and restart…" = "Сбросить настройки и перезапустить…";
 "Restart Now" = "Перезапустить сейчас";
+"Reversed" = "Обратное";
 "Screen including menu bar" = "Экран со строкой меню";
 "Screen including mouse" = "Экран с курсором мыши";
 "Screen Recording" = "Запись экрана";
 "Screen showing AltTab" = "Экран с AltTab";
+"Scrolling direction" = "Направление прокрутки";
 "Search" = "Поиск";
 "Search is a Pro feature." = "Поиск — функция Pro.";
 "Search windows by typing" = "Поиск окон по тексту";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Некоторые функции Pro вернулись к бесплатным значениям по умолчанию.";
 "Source code" = "Исходный код";
 "Space Order" = "Порядок пространств";
+"Standard" = "Стандартное";
 "Start" = "Начало";
 "Start at login" = "Запускать при входе в систему";
 "Start my 14-day trial" = "Начать 14-дневный пробный период";

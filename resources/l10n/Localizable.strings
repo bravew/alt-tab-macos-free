@@ -605,6 +605,9 @@
 "Restart Now" = "Restart Now";
 
 /* No comment provided by engineer. */
+"Reversed" = "Reversed";
+
+/* No comment provided by engineer. */
 "Screen including menu bar" = "Screen including menu bar";
 
 /* No comment provided by engineer. */
@@ -615,6 +618,9 @@
 
 /* No comment provided by engineer. */
 "Screen showing AltTab" = "Screen showing AltTab";
+
+/* No comment provided by engineer. */
+"Scrolling direction" = "Scrolling direction";
 
 /* No comment provided by engineer. */
 "Search" = "Search";
@@ -744,6 +750,9 @@
 
 /* No comment provided by engineer. */
 "Space Order" = "Space Order";
+
+/* No comment provided by engineer. */
+"Standard" = "Standard";
 
 /* No comment provided by engineer. */
 "Start" = "Start";

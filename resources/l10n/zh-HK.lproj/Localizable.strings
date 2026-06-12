@@ -200,10 +200,12 @@
 "Reset settings and restart" = "重設設定並重新啟動";
 "Reset settings and restart…" = "重設設定並重新啟動…";
 "Restart Now" = "立即重新啟動";
+"Reversed" = "反向";
 "Screen including menu bar" = "包含選單列的螢幕";
 "Screen including mouse" = "包含滑鼠的螢幕";
 "Screen Recording" = "螢幕錄製";
 "Screen showing AltTab" = "顯示 AltTab 的螢幕";
+"Scrolling direction" = "捲動方向";
 "Search" = "搜尋";
 "Search is a Pro feature." = "搜尋是 Pro 功能。";
 "Search windows by typing" = "輸入文字搜尋視窗";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "部分 Pro 功能已回復為免費版預設值。";
 "Source code" = "原始碼";
 "Space Order" = "空間順序";
+"Standard" = "標準";
 "Start" = "開頭";
 "Start at login" = "登入時啟動";
 "Start my 14-day trial" = "開始我的 14 天試用";

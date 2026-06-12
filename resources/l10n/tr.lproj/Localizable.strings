@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Ayarları sıfırla ve yeniden başlat";
 "Reset settings and restart…" = "Ayarları sıfırla ve yeniden başlat…";
 "Restart Now" = "Şimdi Yeniden Başlat";
+"Reversed" = "Ters";
 "Screen including menu bar" = "Menü çubuğunu içeren ekran";
 "Screen including mouse" = "Fareyi içeren ekran";
 "Screen Recording" = "Ekran Kaydı";
 "Screen showing AltTab" = "AltTab’ı gösteren ekran";
+"Scrolling direction" = "Kaydırma yönü";
 "Search" = "Ara";
 "Search is a Pro feature." = "Arama bir Pro özelliğidir.";
 "Search windows by typing" = "Yazarak pencerelerde ara";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Bazı Pro özellikleri ücretsiz varsayılanlara döndü.";
 "Source code" = "Kaynak kodu";
 "Space Order" = "Alan sırası";
+"Standard" = "Standart";
 "Start" = "Başlat";
 "Start at login" = "Oturum açıldığında başlat";
 "Start my 14-day trial" = "14 günlük denememi başlat";

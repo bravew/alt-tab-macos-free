@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Đặt lại cài đặt và khởi động lại";
 "Reset settings and restart…" = "Đặt lại cài đặt và khởi động lại…";
 "Restart Now" = "Khởi động lại ngay";
+"Reversed" = "Đảo ngược";
 "Screen including menu bar" = "Màn hình có thanh menu";
 "Screen including mouse" = "Màn hình có con trỏ chuột";
 "Screen Recording" = "Ghi màn hình";
 "Screen showing AltTab" = "Màn hình hiển thị AltTab";
+"Scrolling direction" = "Hướng cuộn";
 "Search" = "Tìm kiếm";
 "Search is a Pro feature." = "Tìm kiếm là tính năng Pro.";
 "Search windows by typing" = "Tìm cửa sổ bằng cách nhập";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Một số tính năng Pro đã trở về mặc định miễn phí.";
 "Source code" = "Mã nguồn";
 "Space Order" = "Thứ tự Không gian";
+"Standard" = "Tiêu chuẩn";
 "Start" = "Đầu";
 "Start at login" = "Khởi động khi đăng nhập";
 "Start my 14-day trial" = "Bắt đầu bản dùng thử 14 ngày của tôi";

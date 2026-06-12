@@ -200,10 +200,12 @@
 "Reset settings and restart" = "設定をリセットして再起動";
 "Reset settings and restart…" = "設定をリセットして再起動…";
 "Restart Now" = "今すぐ再起動";
+"Reversed" = "逆方向";
 "Screen including menu bar" = "メニューバーを含む画面";
 "Screen including mouse" = "マウスのある画面";
 "Screen Recording" = "画面収録";
 "Screen showing AltTab" = "AltTab を表示する画面";
+"Scrolling direction" = "スクロールの方向";
 "Search" = "検索";
 "Search is a Pro feature." = "検索は Pro 機能です。";
 "Search windows by typing" = "入力してウインドウを検索";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "一部の Pro 機能が無料版のデフォルトに戻りました。";
 "Source code" = "ソースコード";
 "Space Order" = "Space 順";
+"Standard" = "標準";
 "Start" = "先頭";
 "Start at login" = "ログイン時に起動";
 "Start my 14-day trial" = "14 日間のトライアルを開始";

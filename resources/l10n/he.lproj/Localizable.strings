@@ -200,10 +200,12 @@
 "Reset settings and restart" = "אפס הגדרות והפעל מחדש";
 "Reset settings and restart…" = "אפס הגדרות והפעל מחדש…";
 "Restart Now" = "הפעל מחדש כעת";
+"Reversed" = "הפוך";
 "Screen including menu bar" = "מסך הכולל את שורת התפריטים";
 "Screen including mouse" = "מסך הכולל את העכבר";
 "Screen Recording" = "הקלטת מסך";
 "Screen showing AltTab" = "מסך המציג את AltTab";
+"Scrolling direction" = "כיוון הגלילה";
 "Search" = "חיפוש";
 "Search is a Pro feature." = "חיפוש הוא תכונת Pro.";
 "Search windows by typing" = "חפש חלונות בהקלדה";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "תכונות Pro מסוימות חזרו לברירות המחדל החינמיות.";
 "Source code" = "קוד מקור";
 "Space Order" = "סדר המרחבים";
+"Standard" = "רגיל";
 "Start" = "התחלה";
 "Start at login" = "הפעל בעת ההתחברות";
 "Start my 14-day trial" = "התחל את תקופת הניסיון של 14 יום שלי";

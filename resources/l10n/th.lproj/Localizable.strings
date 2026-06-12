@@ -200,10 +200,12 @@
 "Reset settings and restart" = "รีเซ็ตการตั้งค่าและรีสตาร์ท";
 "Reset settings and restart…" = "รีเซ็ตการตั้งค่าและรีสตาร์ท…";
 "Restart Now" = "รีสตาร์ททันที";
+"Reversed" = "กลับทิศทาง";
 "Screen including menu bar" = "หน้าจอที่มีแถบเมนู";
 "Screen including mouse" = "หน้าจอที่มีเมาส์";
 "Screen Recording" = "การบันทึกหน้าจอ";
 "Screen showing AltTab" = "หน้าจอที่แสดง AltTab";
+"Scrolling direction" = "ทิศทางการเลื่อน";
 "Search" = "ค้นหา";
 "Search is a Pro feature." = "การค้นหาเป็นคุณสมบัติ Pro";
 "Search windows by typing" = "ค้นหาหน้าต่างโดยการพิมพ์";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "คุณสมบัติ Pro บางอย่างกลับไปเป็นค่าเริ่มต้นแบบฟรีแล้ว";
 "Source code" = "ซอร์สโค้ด";
 "Space Order" = "ลำดับพื้นที่ทำงาน";
+"Standard" = "มาตรฐาน";
 "Start" = "เริ่มต้น";
 "Start at login" = "เริ่มต้นเมื่อเข้าสู่ระบบ";
 "Start my 14-day trial" = "เริ่มทดลองใช้ 14 วัน";

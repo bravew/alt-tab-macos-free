@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Wyzeruj ustawienia i uruchom ponownie";
 "Reset settings and restart…" = "Wyzeruj ustawienia i uruchom ponownie…";
 "Restart Now" = "Uruchom ponownie teraz";
+"Reversed" = "Odwrócony";
 "Screen including menu bar" = "Ekran z paskiem menu";
 "Screen including mouse" = "Ekran z kursorem";
 "Screen Recording" = "Nagrywanie ekranu";
 "Screen showing AltTab" = "Ekran z AltTab";
+"Scrolling direction" = "Kierunek przewijania";
 "Search" = "Wyszukiwanie";
 "Search is a Pro feature." = "Wyszukiwanie to funkcja Pro.";
 "Search windows by typing" = "Wyszukuj okna, wpisując tekst";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Niektóre funkcje Pro powróciły do domyślnych ustawień darmowych.";
 "Source code" = "Kod źródłowy";
 "Space Order" = "Kolejność Przestrzeni";
+"Standard" = "Standardowy";
 "Start" = "Początek";
 "Start at login" = "Uruchamiaj przy logowaniu";
 "Start my 14-day trial" = "Rozpocznij 14-dniowy okres próbny";

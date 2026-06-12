@@ -200,10 +200,12 @@
 "Reset settings and restart" = "설정 초기화 및 재시작";
 "Reset settings and restart…" = "설정 초기화 및 재시작…";
 "Restart Now" = "지금 재시작";
+"Reversed" = "반대로";
 "Screen including menu bar" = "메뉴 막대가 있는 화면";
 "Screen including mouse" = "마우스가 있는 화면";
 "Screen Recording" = "화면 녹화";
 "Screen showing AltTab" = "AltTab이 표시되는 화면";
+"Scrolling direction" = "스크롤 방향";
 "Search" = "검색";
 "Search is a Pro feature." = "검색은 Pro 기능입니다.";
 "Search windows by typing" = "입력하여 윈도우 검색";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "일부 Pro 기능이 무료 기본값으로 되돌아갔습니다.";
 "Source code" = "소스 코드";
 "Space Order" = "Space 순서";
+"Standard" = "표준";
 "Start" = "시작";
 "Start at login" = "로그인 시 시작";
 "Start my 14-day trial" = "14일 체험 시작";

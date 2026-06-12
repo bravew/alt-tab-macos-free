@@ -200,10 +200,12 @@
 "Reset settings and restart" = "Reset settings and restart";
 "Reset settings and restart…" = "Reset settings and restart…";
 "Restart Now" = "Restart Now";
+"Reversed" = "Reversed";
 "Screen including menu bar" = "Screen including menu bar";
 "Screen including mouse" = "Screen including mouse";
 "Screen Recording" = "Screen Recording";
 "Screen showing AltTab" = "Screen showing AltTab";
+"Scrolling direction" = "Scrolling direction";
 "Search" = "Search";
 "Search is a Pro feature." = "Search is a Pro feature.";
 "Search windows by typing" = "Search windows by typing";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "Some Pro features have reverted to free defaults.";
 "Source code" = "Source code";
 "Space Order" = "Space Order";
+"Standard" = "Standard";
 "Start" = "Start";
 "Start at login" = "Start at login";
 "Start my 14-day trial" = "Start my 14-day trial";

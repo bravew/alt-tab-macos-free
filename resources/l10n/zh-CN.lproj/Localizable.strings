@@ -200,10 +200,12 @@
 "Reset settings and restart" = "重置设置并重启";
 "Reset settings and restart…" = "重置设置并重启…";
 "Restart Now" = "立即重启";
+"Reversed" = "反向";
 "Screen including menu bar" = "包含菜单栏的屏幕";
 "Screen including mouse" = "包含鼠标的屏幕";
 "Screen Recording" = "屏幕录制";
 "Screen showing AltTab" = "显示 AltTab 的屏幕";
+"Scrolling direction" = "滚动方向";
 "Search" = "搜索";
 "Search is a Pro feature." = "搜索是 Pro 功能。";
 "Search windows by typing" = "通过输入搜索窗口";
@@ -247,6 +249,7 @@
 "Some Pro features have reverted to free defaults." = "部分 Pro 功能已恢复为免费版默认值。";
 "Source code" = "源代码";
 "Space Order" = "桌面顺序";
+"Standard" = "标准";
 "Start" = "起始";
 "Start at login" = "登录时启动";
 "Start my 14-day trial" = "开始我的 14 天试用";
