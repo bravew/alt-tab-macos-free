@@ -200,7 +200,8 @@ class Windows {
             useLastFocusedRule: Applications.frontmostPid != nil
                 && Preferences.windowOrder[session.shortcutIndex] != .recentlyFocused,
             restoreDefaultOnSearchClear: shouldRestoreDefaultSelectionOnSearchClear,
-            bestMatchOnSearchChange: shouldSelectBestMatchOnSearchChange)
+            bestMatchOnSearchChange: shouldSelectBestMatchOnSearchChange,
+            startOnCurrentWindow: Preferences.scrollToSelectEnabled)
     }
 
     private static func applySelectionDecision(_ decision: SelectionDecision, session: SwitcherSession) {
