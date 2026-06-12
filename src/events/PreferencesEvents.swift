@@ -12,6 +12,7 @@ class PreferencesEvents {
         "appearanceSize",
         "appearanceTheme",
         "windowCornerRoundness",
+        "windowBackgroundOpacity",
         "showOnScreen",
     ]
 

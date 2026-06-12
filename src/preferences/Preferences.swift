@@ -27,6 +27,7 @@ class Preferences {
             "appearanceSize": AppearanceSizePreference.auto.indexAsString,
             "appearanceTheme": AppearanceThemePreference.system.indexAsString,
             "windowCornerRoundness": "100",
+            "windowBackgroundOpacity": "100",
             "theme": ThemePreference.macOs.indexAsString,
             "showOnScreen": ShowOnScreenPreference.active.indexAsString,
             "titleTruncation": TitleTruncationPreference.end.indexAsString,
@@ -116,6 +117,8 @@ class Preferences {
     static var windowDisplayDelay: DispatchTimeInterval { DispatchTimeInterval.milliseconds(CachedUserDefaults.int("windowDisplayDelay")) }
     /// 0...1 multiplier applied to the theme's corner radii (1 = theme default roundness)
     static var windowCornerRoundness: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowCornerRoundness"), 0), 100)) / 100 }
+    /// 0...1 opacity of the switcher's background rectangle (1 = theme default opacity)
+    static var windowBackgroundOpacity: CGFloat { CGFloat(min(max(CachedUserDefaults.int("windowBackgroundOpacity"), 0), 100)) / 100 }
     static var fadeOutAnimation: Bool { CachedUserDefaults.bool("fadeOutAnimation") }
     static var previewFadeInAnimation: Bool { CachedUserDefaults.bool("previewFadeInAnimation") }
     static var hideSpaceNumberLabels: Bool { CachedUserDefaults.bool("hideSpaceNumberLabels") }

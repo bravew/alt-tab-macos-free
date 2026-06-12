@@ -48,19 +48,20 @@ class FrostedGlassEffectView: NSVisualEffectView, EffectView {
 
     func updateAppearance() {
         material = Appearance.material
-        updateRoundedCorners(Appearance.windowCornerRadius)
+        updateMask(Appearance.windowCornerRadius, Preferences.windowBackgroundOpacity)
     }
 
     /// using layer!.cornerRadius works but the corners are aliased; this custom approach gives smooth rounded corners
     /// see https://stackoverflow.com/a/29386935/2249756
-    private func updateRoundedCorners(_ cornerRadius: CGFloat) {
-        if cornerRadius == 0 {
+    /// the mask alpha only dims the material, not the subviews, so it doubles as the background opacity control
+    private func updateMask(_ cornerRadius: CGFloat, _ opacity: CGFloat) {
+        if cornerRadius == 0 && opacity == 1 {
             maskImage = nil
         } else {
             let edgeLength = 2.0 * cornerRadius + 1.0
             let mask = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
                 let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
-                NSColor.black.set()
+                NSColor.black.withAlphaComponent(opacity).set()
                 bezierPath.fill()
                 return true
             }
@@ -83,6 +84,10 @@ enum EffectViewKind {
 
 func requiredEffectViewKind() -> EffectViewKind {
     if #available(macOS 26.0, *) {
+        // NSGlassEffectView can't render its glass partially transparent, so a lowered opacity uses the frosted look
+        if Preferences.windowBackgroundOpacity < 1 {
+            return .frosted
+        }
         if Preferences.effectiveAppearanceStyle(SwitcherSession.activeShortcutIndex) == .appIcons,
            LiquidGlassEffectView.canUsePrivateLiquidGlassLook() {
             return .liquidGlassClear

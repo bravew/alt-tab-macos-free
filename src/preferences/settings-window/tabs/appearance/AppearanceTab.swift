@@ -384,6 +384,7 @@ class AppearanceTab: NSObject {
     static let labelSize = NSLocalizedString("Size", comment: "")
     static let labelTheme = NSLocalizedString("Theme", comment: "")
     static let labelCornerRoundness = NSLocalizedString("Corner roundness", comment: "")
+    static let labelBackgroundOpacity = NSLocalizedString("Background opacity", comment: "")
     static let labelShortcutStyle = NSLocalizedString("After keys are released", comment: "")
     static let labelPreviewSelectedWindow = NSLocalizedString("Preview selected window", comment: "")
 
@@ -501,6 +502,11 @@ class AppearanceTab: NSObject {
         roundnessIndicator.alignment = .right
         roundnessIndicator.fit(56, roundnessIndicator.fittingSize.height)
         table.addRow(leftText: AppearanceTab.labelCornerRoundness, rightViews: [roundnessSlider[1], roundnessIndicator])
+        let backgroundOpacitySlider = LabelAndControl.makeLabelWithSlider("", "windowBackgroundOpacity", 0, 100, 11, true, "%", width: 180)
+        let backgroundOpacityIndicator = backgroundOpacitySlider[2] as! NSTextField
+        backgroundOpacityIndicator.alignment = .right
+        backgroundOpacityIndicator.fit(56, backgroundOpacityIndicator.fittingSize.height)
+        table.addRow(leftText: AppearanceTab.labelBackgroundOpacity, rightViews: [backgroundOpacitySlider[1], backgroundOpacityIndicator])
         addAfterKeysReleasedRow(table)
         addPreviewSelectedWindowRow(table)
         table.addRow(rightViews: customizeStyleButton)
